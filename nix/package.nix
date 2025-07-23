@@ -5,6 +5,7 @@
   nodejs_22,
   pnpm_10,
   stdenv,
+  headplanePnpmHash ? "sha256-3aXY1kKbKhwYhuVpqBolR+iKRQTbtiF1SYg9OjcrqDk=",
   ...
 }:
 stdenv.mkDerivation (finalAttrs: {
@@ -23,8 +24,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   pnpmDeps = pnpm_10.fetchDeps {
     inherit (finalAttrs) pname version src;
-    hash = "sha256-xjjkqbgjYaAGYAmlTFE+Lq3Hp6myZKaW3br0YTDNhQA=";
-	fetcherVersion = 1;
+    fetcherVersion = 2;
+    hash = headplanePnpmHash;
   };
 
   buildPhase = ''
