@@ -80,7 +80,7 @@ in {
           User = config.services.headscale.user;
           Group = config.services.headscale.group;
 
-          ExecStart = "${pkgs.headplane-agent}/bin/hp_agent";
+          ExecStart = "${cfg.agent.package}/bin/hp_agent";
           Restart = "always";
           RestartSec = 5;
 
@@ -100,7 +100,9 @@ in {
         User = config.services.headscale.user;
         Group = config.services.headscale.group;
 
-        ExecStart = "${pkgs.headplane}/bin/headplane";
+        StateDirectory = "headplane";
+
+        ExecStart = "${cfg.package}/bin/headplane";
         Restart = "always";
         RestartSec = 5;
 
